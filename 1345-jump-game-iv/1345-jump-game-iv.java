@@ -39,7 +39,7 @@ class Solution {
         while (!q.isEmpty()) {
             for (int size = q.size(); size > 0; --size) {
                 int i = q.poll();
-                if (i == n - 1) return step; // Reached to last index
+                if (i == n - 1) return step; 
                 List<Integer> next = indicesOfValue.get(arr[i]);
                 next.add(i - 1); next.add(i + 1);
                 for (int j : next) {
