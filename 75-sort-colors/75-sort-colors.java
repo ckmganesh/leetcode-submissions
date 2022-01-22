@@ -14,13 +14,8 @@ class Solution {
         {
             A[++n2] = 2;
         }
-        printArray(A);
+        
     } 
     }
-    void printArray(int nums[]){
-        for(int a:nums){
-            System.out.print(a+" ");
-        }
-        System.out.println();
-    }
+    
 }
