@@ -1,27 +1,27 @@
 class Solution {
     public String reverseParentheses(String s) {
         Stack<Integer> stack = new Stack();
-        char arr[] = s.toCharArray();
-        for(int i=0;i<arr.length;i++){
-            if(arr[i]=='(') stack.push(i);
-            else if(arr[i]==')'){
-                reverseString(arr,stack.pop(),i-1);
+        int pair[] = new int[s.length()];
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='(') stack.push(i);
+            else if(s.charAt(i)==')'){
+                pair[i]=stack.peek();
+                pair[stack.pop()]=i;
             }
         }
         StringBuilder result = new StringBuilder();
-        for(int i=0;i<arr.length;i++){
-            if(arr[i]!=')' && arr[i]!='(') result.append(arr[i]);
+        int direction=1;
+        for(int i=0;i<s.length();i+=direction){
+           if(s.charAt(i)=='(' || s.charAt(i)==')'){
+               i=pair[i];
+               direction=-direction;
+           }
+            else{
+                result.append(s.charAt(i));
+            }
         }
         return result.toString();
     }
-    void reverseString(char arr[],int left,int right){
-        while(left<right){
-            char temp = arr[left];
-            arr[left]=arr[right];
-            arr[right]=temp;
-            left++;
-            right--;
-        }
-    }
     
 }
+    
